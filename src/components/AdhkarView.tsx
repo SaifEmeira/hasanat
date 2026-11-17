@@ -67,16 +67,16 @@ export const AdhkarView: React.FC<AdhkarViewProps> = ({
   const completedCycles = tasbihTarget > 0 ? Math.floor(tasbihCount / tasbihTarget) : 0;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Top Grid: Offline Adhkar Library (Left 8 cols) + Digital Tasbih & Daily Reminders (Right 4 cols) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
         {/* Offline Adhkar Collections */}
         <div className="lg:col-span-8 space-y-4">
-          <div className="bg-[#12100C] border border-[#2B251A] rounded-3xl p-5 sm:p-6 space-y-5">
+          <div className="bg-[#12100C] border border-[#2B251A] rounded-3xl p-4 sm:p-6 space-y-4 sm:space-y-5">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <p className="text-xs text-[#8B816E]">100% Offline Access · حصن المسلم</p>
-                <h2 className="text-xl font-semibold text-[#F5EFE2]">
+                <h2 className="text-lg sm:text-xl font-semibold text-[#F5EFE2]">
                   Prayers &amp; Daily Adhkar
                 </h2>
               </div>
@@ -91,8 +91,8 @@ export const AdhkarView: React.FC<AdhkarViewProps> = ({
               </button>
             </div>
 
-            {/* Category Tabs */}
-            <div className="flex flex-wrap gap-1.5 p-1 bg-[#090806] border border-[#2B251A] rounded-2xl">
+            {/* Category Tabs (single horizontal swipeable strip on mobile) */}
+            <div className="flex flex-nowrap overflow-x-auto no-scrollbar sm:flex-wrap gap-1.5 p-1 bg-[#090806] border border-[#2B251A] rounded-2xl">
               {ADHKAR_CATEGORIES.map((cat) => (
                 <button
                   key={cat.id}
@@ -131,14 +131,14 @@ export const AdhkarView: React.FC<AdhkarViewProps> = ({
                 return (
                   <div
                     key={item.id}
-                    className={`rounded-2xl border p-5 transition-colors ${
+                    className={`rounded-2xl border p-4 sm:p-5 transition-colors ${
                       done
                         ? 'bg-[#16130B] border-[#D4AF37]/45'
                         : 'bg-[#0E0C09] border-[#2B251A]'
                     }`}
                   >
                     <p
-                      className="font-arabic text-2xl sm:text-[1.7rem] leading-[2.2] text-right text-[#F5EFE2]"
+                      className="font-arabic text-[1.4rem] sm:text-[1.7rem] leading-[2.15] sm:leading-[2.2] text-right text-[#F5EFE2]"
                       dir="rtl"
                       lang="ar"
                     >
@@ -182,9 +182,9 @@ export const AdhkarView: React.FC<AdhkarViewProps> = ({
         </div>
 
         {/* Right Rail: Interactive Digital Tasbih + Daily Dhikr Notification Reminders */}
-        <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-20">
+        <div className="lg:col-span-4 space-y-4 sm:space-y-6 lg:sticky lg:top-20">
           {/* Digital Subhah / Tasbih */}
-          <div className="bg-[#12100C] border border-[#2B251A] rounded-3xl p-6 space-y-5">
+          <div className="bg-[#12100C] border border-[#2B251A] rounded-3xl p-4 sm:p-6 space-y-4 sm:space-y-5">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-[#8B816E]">Offline Tasbih (المسبحة)</p>
@@ -292,7 +292,7 @@ export const AdhkarView: React.FC<AdhkarViewProps> = ({
           </div>
 
           {/* Daily Dhikr Reminders */}
-          <div className="bg-[#12100C] border border-[#2B251A] rounded-3xl p-6 space-y-4">
+          <div className="bg-[#12100C] border border-[#2B251A] rounded-3xl p-4 sm:p-6 space-y-4">
             <div>
               <p className="text-xs text-[#8B816E]">Scheduled Notifications</p>
               <h3 className="text-base font-semibold text-[#F5EFE2]">Daily Dhikr Reminders</h3>

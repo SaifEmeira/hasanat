@@ -430,26 +430,26 @@ export const CompleteVerseGame: React.FC<CompleteVerseGameProps> = ({
   const isBlankRevealed = phase === 'CONTINUING' || phase === 'COMPLETED';
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Compact Unobtrusive Game HUD */}
-      <div className="bg-[#12100C] border border-[#2B251A] rounded-2xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-[#12100C] border border-[#2B251A] rounded-2xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
         <div className="space-y-0.5">
           <p className="text-xs text-[#8B816E]">Interactive Quran Challenge · أكمل الآية</p>
-          <h2 className="text-xl font-semibold text-[#F5EFE2]">Complete the Verse</h2>
+          <h2 className="text-lg sm:text-xl font-semibold text-[#F5EFE2]">Complete the Verse</h2>
         </div>
 
-        <div className="flex flex-wrap items-center gap-6 tabular-nums">
+        <div className="flex flex-wrap items-center justify-between sm:justify-start gap-4 sm:gap-6 w-full sm:w-auto tabular-nums">
           <div>
             <div className="text-xs text-[#8B816E]">Score</div>
-            <div className="text-xl font-mono-tabular font-semibold text-[#E8CA68]">{score}</div>
+            <div className="text-lg sm:text-xl font-mono-tabular font-semibold text-[#E8CA68]">{score}</div>
           </div>
           <div>
             <div className="text-xs text-[#8B816E]">Streak</div>
-            <div className="text-xl font-mono-tabular font-semibold text-[#F5EFE2]">{streak}</div>
+            <div className="text-lg sm:text-xl font-mono-tabular font-semibold text-[#F5EFE2]">{streak}</div>
           </div>
           <div>
             <div className="text-xs text-[#8B816E]">Best</div>
-            <div className="text-xl font-mono-tabular font-semibold text-[#D4AF37] flex items-center gap-1">
+            <div className="text-lg sm:text-xl font-mono-tabular font-semibold text-[#D4AF37] flex items-center gap-1">
               <Trophy className="w-4 h-4" />
               <span>{bestStreak}</span>
             </div>
@@ -467,10 +467,10 @@ export const CompleteVerseGame: React.FC<CompleteVerseGameProps> = ({
       </div>
 
       {/* Main Game Arena */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        <div className="lg:col-span-8 bg-[#12100C] border border-[#2B251A] rounded-3xl p-6 sm:p-8 space-y-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
+        <div className="lg:col-span-8 bg-[#12100C] border border-[#2B251A] rounded-3xl p-4 sm:p-8 space-y-5 sm:space-y-6">
           {/* Round Header Metadata */}
-          <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#2B251A]">
+          <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 pb-3 sm:pb-4 border-b border-[#2B251A]">
             <div className="flex items-center gap-2 text-xs text-[#C7BDA8]">
               <span className="font-arabic text-lg text-[#E8CA68]">{challenge.surahArabic}</span>
               <span aria-hidden="true">·</span>
@@ -485,17 +485,17 @@ export const CompleteVerseGame: React.FC<CompleteVerseGameProps> = ({
 
           {/* Verse Display Canvas */}
           <div
-            className="rounded-2xl bg-[#0B0A07] border border-[#D4AF37]/30 p-6 sm:p-8 text-center space-y-5"
+            className="rounded-2xl bg-[#0B0A07] border border-[#D4AF37]/30 p-4 sm:p-8 text-center space-y-4 sm:space-y-5"
             dir="rtl"
             lang="ar"
           >
-            <div className="font-arabic text-3xl sm:text-4xl leading-[2.3] text-[#F5EFE2] flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+            <div className="font-arabic text-2xl sm:text-4xl leading-[2.2] sm:leading-[2.3] text-[#F5EFE2] flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-3 gap-y-2">
               {challenge.arabicWords.map((word, idx) => {
                 if (idx === challenge.blankIndex) {
                   return (
                     <span
                       key={idx}
-                      className={`inline-flex items-center justify-center min-w-[110px] px-4 py-1 rounded-xl border transition-all ${
+                      className={`inline-flex items-center justify-center min-w-[84px] sm:min-w-[110px] px-3 sm:px-4 py-1 rounded-xl border transition-all ${
                         isBlankRevealed
                           ? 'bg-[#D4AF37]/20 border-[#D4AF37] text-[#F5DC84]'
                           : 'bg-[#1A1711] border-[#D4AF37]/60 text-[#D4AF37]'
@@ -542,7 +542,7 @@ export const CompleteVerseGame: React.FC<CompleteVerseGameProps> = ({
           </div>
 
           {/* 4 Multiple-Choice Word Cards */}
-          <div className="grid grid-cols-2 gap-3" dir="rtl" lang="ar">
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-3" dir="rtl" lang="ar">
             {choices.map((choice) => {
               const isWrong = wrongChoices.includes(choice);
               const isCorrect =
@@ -554,7 +554,7 @@ export const CompleteVerseGame: React.FC<CompleteVerseGameProps> = ({
                   type="button"
                   disabled={phase !== 'WAITING_CHOICE' || isWrong}
                   onClick={() => handleSelectWord(choice)}
-                  className={`min-h-[60px] px-4 py-3 rounded-2xl border font-arabic text-2xl transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:cursor-default ${
+                  className={`min-h-[56px] sm:min-h-[60px] px-2.5 sm:px-4 py-2.5 sm:py-3 rounded-2xl border font-arabic text-xl sm:text-2xl transition-colors flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer disabled:cursor-default ${
                     isCorrect
                       ? 'bg-[#D4AF37] border-[#E8CA68] text-[#090806] font-bold'
                       : isWrong

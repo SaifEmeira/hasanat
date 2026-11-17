@@ -15,11 +15,13 @@
     --ink-muted: #8b816e;
   }
 
-  html {
+  html,
+  body {
     background-color: var(--bg-obsidian);
     color: var(--ink-ivory);
     font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -70,4 +72,13 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #9e7d22;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

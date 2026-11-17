@@ -38,8 +38,8 @@ export const PWAInstallButton: React.FC<PWAInstallButtonProps> = ({compact = fal
       </button>
 
       {showGuideModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md rounded-3xl bg-[#12100C] border border-[#2B251A] p-6 shadow-2xl space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-3 sm:p-4">
+          <div className="w-full max-w-md max-h-[90dvh] overflow-y-auto rounded-3xl bg-[#12100C] border border-[#2B251A] p-5 sm:p-6 shadow-2xl space-y-4">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <h3 className="text-lg font-semibold text-[#F5EFE2]">

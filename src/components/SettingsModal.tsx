@@ -61,12 +61,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="w-full max-w-3xl max-h-[88vh] bg-[#12100C] border border-[#2B251A] rounded-3xl flex flex-col overflow-hidden shadow-2xl">
+    <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+      <div className="w-full max-w-3xl max-h-[90dvh] bg-[#12100C] border border-[#2B251A] rounded-3xl flex flex-col overflow-hidden shadow-2xl">
         {/* Header */}
-        <div className="p-5 border-b border-[#2B251A] flex items-center justify-between gap-4">
-          <div>
-            <h2 className="text-lg font-semibold text-[#F5EFE2]">
+        <div className="p-4 sm:p-5 border-b border-[#2B251A] flex items-center justify-between gap-3 sm:gap-4">
+          <div className="min-w-0">
+            <h2 className="text-base sm:text-lg font-semibold text-[#F5EFE2]">
               Settings · <span className="font-arabic text-[#E8CA68]">الإعدادات</span>
             </h2>
             <p className="text-xs text-[#8B816E]">
@@ -77,42 +77,42 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             type="button"
             onClick={onClose}
             aria-label="Close settings"
-            className="w-10 h-10 rounded-xl bg-[#1A1711] border border-[#2B251A] flex items-center justify-center text-[#C7BDA8] hover:text-[#F5EFE2] cursor-pointer"
+            className="w-10 h-10 rounded-xl bg-[#1A1711] border border-[#2B251A] flex items-center justify-center text-[#C7BDA8] hover:text-[#F5EFE2] shrink-0 cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Sub-Navigation & Browser Permission Strip */}
-        <div className="px-5 py-3 border-b border-[#2B251A] bg-[#0D0B08] flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-1 bg-[#090806] p-1 rounded-xl border border-[#2B251A]">
+        <div className="px-4 sm:px-5 py-3 border-b border-[#2B251A] bg-[#0D0B08] flex flex-wrap items-center justify-between gap-2.5 sm:gap-3">
+          <div className="flex items-center gap-1 bg-[#090806] p-1 rounded-xl border border-[#2B251A] w-full sm:w-auto">
             <button
               type="button"
               onClick={() => setTab('notifications')}
-              className={`px-4 py-1.5 rounded-lg text-xs font-medium cursor-pointer ${
+              className={`flex-1 sm:flex-initial min-h-[38px] px-3 sm:px-4 py-1.5 rounded-lg text-xs font-medium cursor-pointer ${
                 tab === 'notifications' ? 'bg-[#D4AF37] text-[#090806] font-semibold' : 'text-[#C7BDA8]'
               }`}
             >
-              Prayer Notifications &amp; Snooze
+              Notifications &amp; Snooze
             </button>
             <button
               type="button"
               onClick={() => setTab('location')}
-              className={`px-4 py-1.5 rounded-lg text-xs font-medium cursor-pointer ${
+              className={`flex-1 sm:flex-initial min-h-[38px] px-3 sm:px-4 py-1.5 rounded-lg text-xs font-medium cursor-pointer ${
                 tab === 'location' ? 'bg-[#D4AF37] text-[#090806] font-semibold' : 'text-[#C7BDA8]'
               }`}
             >
-              Location &amp; Calculation
+              Location &amp; Method
             </button>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <PWAInstallButton />
             {notificationPermission !== 'granted' && (
               <button
                 type="button"
                 onClick={onRequestNotificationPermission}
-                className="min-h-[38px] px-3 py-1.5 rounded-xl bg-[#1A1711] border border-[#D4AF37]/50 text-xs font-medium text-[#E8CA68] flex items-center gap-1.5 cursor-pointer"
+                className="min-h-[40px] px-3 py-1.5 rounded-xl bg-[#1A1711] border border-[#D4AF37]/50 text-xs font-medium text-[#E8CA68] flex items-center gap-1.5 cursor-pointer"
               >
                 <Bell className="w-3.5 h-3.5" />
                 <span>Allow Browser Alerts</span>
@@ -122,7 +122,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         </div>
 
         {/* Body */}
-        <div className="p-5 overflow-y-auto flex-1 space-y-4">
+        <div className="p-4 sm:p-5 overflow-y-auto flex-1 space-y-4">
           {tab === 'notifications' ? (
             <div className="space-y-4">
               {PRAYER_IDS.map((pid) => {

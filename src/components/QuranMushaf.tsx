@@ -609,26 +609,26 @@ export const QuranMushaf: React.FC<QuranMushafProps> = ({
 
   const arabicTextSizeClass =
     fontScale === 'sm'
-      ? 'text-[1.45rem] leading-[2.45]'
+      ? 'text-[1.35rem] sm:text-[1.45rem] leading-[2.35] sm:leading-[2.45]'
       : fontScale === 'md'
-        ? 'text-[1.7rem] leading-[2.55]'
+        ? 'text-[1.5rem] sm:text-[1.7rem] leading-[2.45] sm:leading-[2.55]'
         : fontScale === 'lg'
-          ? 'text-[1.95rem] md:text-[2.15rem] leading-[2.65]'
-          : 'text-[2.3rem] md:text-[2.5rem] leading-[2.75]';
+          ? 'text-[1.68rem] sm:text-[1.95rem] md:text-[2.15rem] leading-[2.5] sm:leading-[2.65]'
+          : 'text-[1.95rem] sm:text-[2.3rem] md:text-[2.5rem] leading-[2.6] sm:leading-[2.75]';
 
   const currentScholarInfo =
     TAFSIR_SCHOLARS.find((s) => s.id === tafsirScholar) ?? TAFSIR_SCHOLARS[0];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Top Workspace Control Bar: Surah Index, Sheikh Selector, Offline Download */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
-        <div className="lg:col-span-5 bg-[#12100C] border border-[#2B251A] rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2.5 min-w-0">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 items-stretch">
+        <div className="lg:col-span-5 bg-[#12100C] border border-[#2B251A] rounded-2xl p-3.5 sm:p-4 flex flex-wrap items-center justify-between gap-2.5 sm:gap-3">
+          <div className="flex items-center gap-2 min-w-0">
             <button
               type="button"
               onClick={() => setShowIndexDrawer(true)}
-              className="min-h-[44px] px-3.5 py-2 rounded-xl bg-[#1A1711] hover:bg-[#242018] border border-[#2B251A] text-xs font-medium text-[#F5EFE2] flex items-center gap-2 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="min-h-[44px] px-3 sm:px-3.5 py-2 rounded-xl bg-[#1A1711] hover:bg-[#242018] border border-[#2B251A] text-xs font-medium text-[#F5EFE2] flex items-center gap-1.5 sm:gap-2 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
             >
               <List className="w-4 h-4 text-[#D4AF37]" />
               <span>Surahs &amp; Juz</span>
@@ -637,7 +637,7 @@ export const QuranMushaf: React.FC<QuranMushafProps> = ({
             <button
               type="button"
               onClick={() => setShowTafsirModal(true)}
-              className="min-h-[44px] px-3.5 py-2 rounded-xl bg-[#1A1711] hover:bg-[#242018] border border-[#D4AF37]/40 text-xs font-medium text-[#E8CA68] flex items-center gap-2 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="min-h-[44px] px-3 sm:px-3.5 py-2 rounded-xl bg-[#1A1711] hover:bg-[#242018] border border-[#D4AF37]/40 text-xs font-medium text-[#E8CA68] flex items-center gap-1.5 sm:gap-2 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
             >
               <BookText className="w-4 h-4 text-[#D4AF37]" />
               <span>Tafsir</span>
@@ -663,7 +663,7 @@ export const QuranMushaf: React.FC<QuranMushafProps> = ({
               onChange={(e) => setPageJumpInput(e.target.value)}
               placeholder="Page #"
               aria-label="Jump to Mushaf page number"
-              className="w-20 min-h-[44px] px-3 rounded-xl bg-[#090806] border border-[#2B251A] text-xs font-mono-tabular text-[#F5EFE2] placeholder-[#8B816E] focus:outline-none focus:border-[#D4AF37]"
+              className="w-16 sm:w-20 min-h-[44px] px-2.5 sm:px-3 rounded-xl bg-[#090806] border border-[#2B251A] text-xs font-mono-tabular text-[#F5EFE2] placeholder-[#8B816E] focus:outline-none focus:border-[#D4AF37]"
             />
             <button
               type="submit"
@@ -675,8 +675,8 @@ export const QuranMushaf: React.FC<QuranMushafProps> = ({
         </div>
 
         {/* Center/Right: Sheikh Reciter & Sync Controls */}
-        <div className="lg:col-span-7 bg-[#12100C] border border-[#2B251A] rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3 flex-1 min-w-[220px]">
+        <div className="lg:col-span-7 bg-[#12100C] border border-[#2B251A] rounded-2xl p-3.5 sm:p-4 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3 w-full sm:w-auto sm:flex-1 sm:min-w-[220px]">
             <div className="w-10 h-10 rounded-xl bg-[#1A1711] border border-[#2B251A] flex items-center justify-center shrink-0">
               <Volume2 className="w-4 h-4 text-[#D4AF37]" />
             </div>
@@ -688,7 +688,7 @@ export const QuranMushaf: React.FC<QuranMushafProps> = ({
                 id="sheikh-select"
                 value={selectedSheikh.id}
                 onChange={(e) => handleSheikhChange(e.target.value)}
-                className="w-full bg-[#090806] border border-[#2B251A] rounded-lg px-2.5 py-1.5 text-sm text-[#F5EFE2] focus:outline-none focus:border-[#D4AF37] cursor-pointer"
+                className="w-full min-h-[38px] bg-[#090806] border border-[#2B251A] rounded-lg px-2.5 py-1.5 text-xs sm:text-sm text-[#F5EFE2] focus:outline-none focus:border-[#D4AF37] cursor-pointer"
               >
                 {SHEIKHS.map((sheikh) => (
                   <option key={sheikh.id} value={sheikh.id}>
@@ -699,11 +699,11 @@ export const QuranMushaf: React.FC<QuranMushafProps> = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-2 flex-wrap w-full sm:w-auto">
             <button
               type="button"
               onClick={() => setAutoFollowPage((v) => !v)}
-              className={`min-h-[44px] px-3 py-2 rounded-xl border text-xs font-medium flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
+              className={`min-h-[44px] flex-1 sm:flex-initial justify-center px-3 py-2 rounded-xl border text-xs font-medium flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                 autoFollowPage
                   ? 'bg-[#D4AF37]/15 border-[#D4AF37]/60 text-[#E8CA68]'
                   : 'bg-[#1A1711] border-[#2B251A] text-[#C7BDA8]'
@@ -718,7 +718,7 @@ export const QuranMushaf: React.FC<QuranMushafProps> = ({
               type="button"
               onClick={handleDownloadFullQuran}
               disabled={downloadingAll || !isOnline || cachedPageCount >= 604}
-              className="min-h-[44px] px-3 py-2 rounded-xl bg-[#1A1711] hover:bg-[#242018] disabled:opacity-60 border border-[#2B251A] text-xs font-medium text-[#F5EFE2] flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="min-h-[44px] flex-1 sm:flex-initial justify-center px-3 py-2 rounded-xl bg-[#1A1711] hover:bg-[#242018] disabled:opacity-60 border border-[#2B251A] text-xs font-medium text-[#F5EFE2] flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
             >
               <HardDriveDownload className="w-3.5 h-3.5 text-[#D4AF37]" />
               <span>
@@ -726,7 +726,7 @@ export const QuranMushaf: React.FC<QuranMushafProps> = ({
                   ? '604 Pages Offline'
                   : downloadingAll
                     ? 'Downloading...'
-                    : `Save 604 Pages (${cachedPageCount}/604)`}
+                    : `Save 604 (${cachedPageCount}/604)`}
               </span>
             </button>
           </div>
@@ -735,8 +735,8 @@ export const QuranMushaf: React.FC<QuranMushafProps> = ({
 
       {/* Visible Saved Bookmarks Bar directly on Main Quran Screen */}
       {bookmarks.length > 0 && (
-        <div className="bg-[#12100C] border border-[#2B251A] rounded-2xl px-4 py-3 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3 flex-wrap min-w-0">
+        <div className="bg-[#12100C] border border-[#2B251A] rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between gap-2.5">
+          <div className="flex items-center gap-2 sm:gap-3 flex-nowrap overflow-x-auto no-scrollbar sm:flex-wrap min-w-0">
             <span className="text-xs font-medium text-[#D4AF37] flex items-center gap-1.5 shrink-0">
               <Bookmark className="w-3.5 h-3.5 fill-current" />
               <span>Bookmarks ({bookmarks.length})</span>
@@ -785,21 +785,76 @@ export const QuranMushaf: React.FC<QuranMushafProps> = ({
         </div>
       )}
 
+      {/* Mobile-Only Instant Sheikh Audio & Verse Action Strip (above Mushaf so no scrolling needed) */}
+      <div className="lg:hidden bg-[#12100C] border border-[#2B251A] rounded-2xl p-3 flex items-center justify-between gap-2">
+        <div className="flex items-center gap-1.5">
+          <button
+            type="button"
+            onClick={handlePrevAyah}
+            aria-label="Previous Ayah"
+            className="w-10 h-10 rounded-xl bg-[#1A1711] border border-[#2B251A] flex items-center justify-center text-[#F5EFE2] cursor-pointer"
+          >
+            <SkipBack className="w-4 h-4" />
+          </button>
+          <button
+            type="button"
+            onClick={handleTogglePlay}
+            aria-label={isPlaying ? 'Pause Recitation' : 'Play Recitation'}
+            className="min-h-[40px] px-4 rounded-xl bg-[#D4AF37] text-[#090806] text-xs font-semibold flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
+          >
+            {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+            <span>{isPlaying ? 'Pause' : 'Recite'}</span>
+          </button>
+          <button
+            type="button"
+            onClick={handleNextAyah}
+            aria-label="Next Ayah"
+            className="w-10 h-10 rounded-xl bg-[#1A1711] border border-[#2B251A] flex items-center justify-center text-[#F5EFE2] cursor-pointer"
+          >
+            <SkipForward className="w-4 h-4" />
+          </button>
+        </div>
+
+        <div className="flex items-center gap-2 min-w-0">
+          <span className="text-[11px] text-[#C7BDA8] tabular-nums truncate">
+            {activeAyahObj
+              ? `${activeAyahObj.surah.number}:${activeAyahObj.numberInSurah}`
+              : `p.${currentPage}`}
+          </span>
+          {activeAyahObj && (
+            <button
+              type="button"
+              onClick={() => handleToggleVerseBookmark(activeAyahObj)}
+              aria-label="Bookmark active verse"
+              className={`w-10 h-10 rounded-xl border flex items-center justify-center shrink-0 cursor-pointer ${
+                isSelectedVerseBookmarked
+                  ? 'bg-[#D4AF37]/15 border-[#D4AF37]/60 text-[#E8CA68]'
+                  : 'bg-[#1A1711] border-[#2B251A] text-[#C7BDA8]'
+              }`}
+            >
+              <Bookmark
+                className={`w-4 h-4 ${isSelectedVerseBookmarked ? 'fill-current' : ''}`}
+              />
+            </button>
+          )}
+        </div>
+      </div>
+
       {/* Main Layout: Ornate Mushaf Page (Left/Center) + Sticky Recitation, Tafsir & Bookmarks Rail */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
         {/* Ornate Dark-Gold Mushaf Page Canvas */}
-        <div className="lg:col-span-8 bg-[#12100C] border border-[#2B251A] rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl shadow-black/50">
-          <div className="border border-[#D4AF37]/30 rounded-2xl p-4 sm:p-6 md:p-8 bg-[#0E0C09] relative">
+        <div className="lg:col-span-8 bg-[#12100C] border border-[#2B251A] rounded-2xl sm:rounded-3xl p-2.5 sm:p-6 md:p-8 shadow-2xl shadow-black/50">
+          <div className="border border-[#D4AF37]/30 rounded-xl sm:rounded-2xl p-3 sm:p-6 md:p-8 bg-[#0E0C09] relative">
             {/* Top Page Metadata & Page Bookmark Button */}
-            <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-6 border-b border-[#2B251A] text-xs text-[#C7BDA8]">
+            <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 pb-3 mb-4 sm:pb-4 sm:mb-6 border-b border-[#2B251A] text-xs text-[#C7BDA8]">
               <div className="flex items-center gap-2 font-arabic text-base text-[#E8CA68]">
                 <span>{primarySurah ? primarySurah.name : 'القرآن الكريم'}</span>
               </div>
 
-              <div className="flex flex-wrap items-center gap-3 tabular-nums text-[#8B816E]">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 tabular-nums text-[#8B816E]">
                 <span>Juz {pageData?.juz ?? 1}</span>
                 <span aria-hidden="true">·</span>
-                <span>Page {currentPage} of 604</span>
+                <span>p.{currentPage}/604</span>
                 <button
                   type="button"
                   onClick={handleTogglePageBookmark}
@@ -876,16 +931,21 @@ export const QuranMushaf: React.FC<QuranMushafProps> = ({
                       className="space-y-5"
                     >
                       {startsHere && (
-                        <div className="border border-[#D4AF37]/45 bg-[#15120C] rounded-xl px-5 py-3.5 text-center space-y-1">
+                        <div className="border border-[#D4AF37]/45 bg-[#15120C] rounded-xl px-3.5 sm:px-5 py-3 sm:py-3.5 text-center space-y-1">
                           <div
-                            className="flex items-center justify-between gap-4 text-xs text-[#8B816E]"
+                            className="flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-4 text-xs text-[#8B816E]"
                             dir="ltr"
                           >
-                            <span>{group.surah.revelationType}</span>
-                            <span className="font-arabic text-2xl text-[#E8CA68] font-bold">
+                            <span className="order-2 sm:order-1 hidden sm:inline">
+                              {group.surah.revelationType}
+                            </span>
+                            <span className="order-1 sm:order-2 font-arabic text-xl sm:text-2xl text-[#E8CA68] font-bold">
                               {group.surah.name}
                             </span>
-                            <span className="tabular-nums">{group.surah.numberOfAyahs} Ayahs</span>
+                            <span className="order-3 tabular-nums">
+                              <span className="sm:hidden">{group.surah.revelationType} · </span>
+                              {group.surah.numberOfAyahs} Ayahs
+                            </span>
                           </div>
                           <div className="text-xs text-[#C7BDA8]" dir="ltr">
                             {group.surah.englishName} · {group.surah.englishNameTranslation}
@@ -894,7 +954,7 @@ export const QuranMushaf: React.FC<QuranMushafProps> = ({
                       )}
 
                       {showBismillah && (
-                        <p className="text-center font-arabic text-2xl md:text-3xl text-[#E8CA68] py-1">
+                        <p className="text-center font-arabic text-xl sm:text-2xl md:text-3xl text-[#E8CA68] py-1">
                           {BISMILLAH_PREFIX}
                         </p>
                       )}
@@ -955,18 +1015,19 @@ export const QuranMushaf: React.FC<QuranMushafProps> = ({
             )}
 
             {/* Page Footer Navigation */}
-            <div className="mt-8 pt-5 border-t border-[#2B251A] flex items-center justify-between gap-4">
+            <div className="mt-6 sm:mt-8 pt-4 sm:pt-5 border-t border-[#2B251A] flex items-center justify-between gap-2 sm:gap-4">
               <button
                 type="button"
                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                 disabled={currentPage <= 1}
-                className="min-h-[44px] px-4 py-2 rounded-xl bg-[#1A1711] hover:bg-[#242018] disabled:opacity-40 border border-[#2B251A] text-xs font-medium text-[#F5EFE2] flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+                className="min-h-[44px] px-3 sm:px-4 py-2 rounded-xl bg-[#1A1711] hover:bg-[#242018] disabled:opacity-40 border border-[#2B251A] text-xs font-medium text-[#F5EFE2] flex items-center gap-1 sm:gap-1.5 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
               >
                 <ChevronLeft className="w-4 h-4 text-[#D4AF37]" />
-                <span>Previous Page</span>
+                <span className="sm:hidden">Prev</span>
+                <span className="hidden sm:inline">Previous Page</span>
               </button>
 
-              <span className="font-arabic text-lg text-[#E8CA68] tabular-nums">
+              <span className="font-arabic text-base sm:text-lg text-[#E8CA68] tabular-nums">
                 {toArabicIndic(currentPage)} / ٦٠٤
               </span>
 
@@ -974,9 +1035,10 @@ export const QuranMushaf: React.FC<QuranMushafProps> = ({
                 type="button"
                 onClick={() => setCurrentPage((p) => Math.min(604, p + 1))}
                 disabled={currentPage >= 604}
-                className="min-h-[44px] px-4 py-2 rounded-xl bg-[#1A1711] hover:bg-[#242018] disabled:opacity-40 border border-[#2B251A] text-xs font-medium text-[#F5EFE2] flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+                className="min-h-[44px] px-3 sm:px-4 py-2 rounded-xl bg-[#1A1711] hover:bg-[#242018] disabled:opacity-40 border border-[#2B251A] text-xs font-medium text-[#F5EFE2] flex items-center gap-1 sm:gap-1.5 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
               >
-                <span>Next Page</span>
+                <span className="sm:hidden">Next</span>
+                <span className="hidden sm:inline">Next Page</span>
                 <ChevronRight className="w-4 h-4 text-[#D4AF37]" />
               </button>
             </div>
@@ -1192,9 +1254,9 @@ export const QuranMushaf: React.FC<QuranMushafProps> = ({
 
       {/* Scholarly Tafsir Modal Drawer */}
       {showTafsirModal && activeTafsirAyah && (
-        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="w-full max-w-2xl max-h-[88vh] bg-[#12100C] border border-[#2B251A] rounded-3xl flex flex-col overflow-hidden shadow-2xl">
-            <div className="p-5 border-b border-[#2B251A] flex items-center justify-between gap-4">
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+          <div className="w-full max-w-2xl max-h-[90dvh] bg-[#12100C] border border-[#2B251A] rounded-3xl flex flex-col overflow-hidden shadow-2xl">
+            <div className="p-4 sm:p-5 border-b border-[#2B251A] flex items-center justify-between gap-3 sm:gap-4">
               <div>
                 <h2 className="text-lg font-semibold text-[#F5EFE2]">
                   Tafsir &amp; Exegesis · <span className="font-arabic text-[#E8CA68]">التفسير</span>
@@ -1302,9 +1364,9 @@ export const QuranMushaf: React.FC<QuranMushafProps> = ({
 
       {/* Bookmarks Manager Modal */}
       {showAllBookmarks && (
-        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="w-full max-w-lg max-h-[82vh] bg-[#12100C] border border-[#2B251A] rounded-3xl flex flex-col overflow-hidden shadow-2xl">
-            <div className="p-5 border-b border-[#2B251A] flex items-center justify-between gap-4">
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+          <div className="w-full max-w-lg max-h-[90dvh] bg-[#12100C] border border-[#2B251A] rounded-3xl flex flex-col overflow-hidden shadow-2xl">
+            <div className="p-4 sm:p-5 border-b border-[#2B251A] flex items-center justify-between gap-3 sm:gap-4">
               <div>
                 <h2 className="text-lg font-semibold text-[#F5EFE2]">
                   Saved Bookmarks · <span className="font-arabic text-[#E8CA68]">المحفوظات</span>
@@ -1373,9 +1435,9 @@ export const QuranMushaf: React.FC<QuranMushafProps> = ({
 
       {/* Surah & Juz Index Modal Drawer */}
       {showIndexDrawer && (
-        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="w-full max-w-2xl max-h-[85vh] bg-[#12100C] border border-[#2B251A] rounded-3xl flex flex-col overflow-hidden shadow-2xl">
-            <div className="p-5 border-b border-[#2B251A] flex items-center justify-between gap-4">
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+          <div className="w-full max-w-2xl max-h-[90dvh] bg-[#12100C] border border-[#2B251A] rounded-3xl flex flex-col overflow-hidden shadow-2xl">
+            <div className="p-4 sm:p-5 border-b border-[#2B251A] flex items-center justify-between gap-3 sm:gap-4">
               <div>
                 <h2 className="text-lg font-semibold text-[#F5EFE2]">Quran Index (الفهرس)</h2>
                 <p className="text-xs text-[#8B816E]">114 Surahs · 30 Juz · 604 Madani Mushaf Pages</p>

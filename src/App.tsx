@@ -446,10 +446,10 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#090806] text-[#F5EFE2] flex flex-col pb-20 md:pb-10">
+    <div className="min-h-screen bg-[#090806] text-[#F5EFE2] flex flex-col pb-[calc(4.75rem+env(safe-area-inset-bottom))] md:pb-10">
       {/* Top Bar Contract: Strict 3-Zone Header separated by gap-8 */}
       <header className="sticky top-0 z-30 bg-[#090806]/90 backdrop-blur-md border-b border-[#2B251A]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-8">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 h-14 flex items-center justify-between gap-4 sm:gap-8">
           {/* Zone 1: Single-Element Wordmark */}
           <a
             href="#top"
@@ -488,7 +488,7 @@ export default function App() {
             <button
               type="button"
               onClick={() => setShowSettings(true)}
-              className="min-h-[40px] px-4 py-2 rounded-xl bg-[#D4AF37] hover:bg-[#E8CA68] text-[#090806] text-xs font-semibold flex items-center gap-2 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="min-h-[42px] px-3.5 sm:px-4 py-2 rounded-xl bg-[#D4AF37] hover:bg-[#E8CA68] text-[#090806] text-xs font-semibold flex items-center gap-2 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
             >
               <Settings className="w-3.5 h-3.5" />
               <span>Settings</span>
@@ -499,25 +499,34 @@ export default function App() {
 
       {/* Operational Context Strip (Clean Unboxed Metadata below Header) */}
       <div className="border-b border-[#2B251A]/70 bg-[#0D0B08]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs text-[#C7BDA8]">
-          <div className="flex flex-wrap items-center gap-2 tabular-nums">
-            <span className="text-[#E8CA68] font-medium">{location.name}</span>
-            <span aria-hidden="true">·</span>
-            <span>
-              Next: <strong className="text-[#F5EFE2]">{schedule.nextPrayer.name}</strong> at{' '}
-              {formatPrayerTime(schedule.nextPrayer.time)} (
-              {formatCountdown(schedule.nextPrayer.time.getTime() - tickNow.getTime())})
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-3 text-xs text-[#C7BDA8]">
+          <div className="flex items-center gap-1.5 sm:gap-2 tabular-nums min-w-0">
+            <span className="text-[#E8CA68] font-medium truncate max-w-[100px] sm:max-w-none">
+              {location.name}
             </span>
-            <span aria-hidden="true" className="hidden sm:inline">·</span>
-            <span className="hidden sm:inline">
+            <span aria-hidden="true">·</span>
+            <span className="truncate">
+              Next: <strong className="text-[#F5EFE2]">{schedule.nextPrayer.name}</strong>{' '}
+              <span className="hidden sm:inline">at </span>
+              {formatPrayerTime(schedule.nextPrayer.time)}{' '}
+              <span className="hidden sm:inline">
+                ({formatCountdown(schedule.nextPrayer.time.getTime() - tickNow.getTime())})
+              </span>
+            </span>
+            <span aria-hidden="true" className="hidden md:inline">·</span>
+            <span className="hidden md:inline">
               Qibla {schedule.qiblaBearing.toFixed(1)}° {getCardinalDirection(schedule.qiblaBearing)}
             </span>
           </div>
 
-          <div className="flex items-center gap-3 tabular-nums text-[#8B816E]">
-            <span>{isOnline ? 'Online · Offline Cache Active' : 'Offline Mode · Local Sanctuary Ready'}</span>
-            <span aria-hidden="true">·</span>
-            <span className="text-[#D4AF37]">Hasanat: {hasanatScore.toLocaleString()}</span>
+          <div className="flex items-center gap-2 sm:gap-3 tabular-nums text-[#8B816E] shrink-0">
+            <span className="hidden lg:inline">
+              {isOnline ? 'Online · Offline Cache Active' : 'Offline Mode · Local Sanctuary Ready'}
+            </span>
+            <span aria-hidden="true" className="hidden lg:inline">·</span>
+            <span className="hidden sm:inline text-[#D4AF37]">
+              Hasanat: {hasanatScore.toLocaleString()}
+            </span>
             <PWAInstallButton compact />
           </div>
         </div>
@@ -525,7 +534,7 @@ export default function App() {
 
       {/* Live In-App Notification Banners with Snooze Action */}
       {banners.length > 0 && (
-        <div className="fixed top-16 right-4 z-50 w-[calc(100%-2rem)] max-w-sm space-y-2">
+        <div className="fixed top-16 left-4 right-4 sm:left-auto sm:right-4 z-50 sm:w-full max-w-sm mx-auto sm:mx-0 space-y-2">
           {banners.map((b) => (
             <div
               key={b.id}
@@ -557,7 +566,7 @@ export default function App() {
                   <button
                     type="button"
                     onClick={() => handleSnoozeBanner(b)}
-                    className="min-h-[34px] px-3 py-1 rounded-lg bg-[#1A1711] hover:bg-[#242018] border border-[#D4AF37]/40 text-xs font-medium text-[#E8CA68] cursor-pointer"
+                    className="min-h-[36px] px-3 py-1 rounded-lg bg-[#1A1711] hover:bg-[#242018] border border-[#D4AF37]/40 text-xs font-medium text-[#E8CA68] cursor-pointer"
                   >
                     Snooze ({b.snoozeMinutes} min)
                   </button>
@@ -569,7 +578,7 @@ export default function App() {
       )}
 
       {/* Main Content Area */}
-      <main id="top" className="max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 flex-1">
+      <main id="top" className="max-w-7xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-6 flex-1">
         {activeTab === 'quran' && (
           <QuranMushaf
             isOnline={isOnline}
@@ -649,7 +658,7 @@ export default function App() {
       {/* Mobile Fixed Bottom Navigation Bar */}
       <nav
         aria-label="Mobile Navigation"
-        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0D0B08]/95 backdrop-blur-md border-t border-[#2B251A]"
+        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0D0B08]/95 backdrop-blur-md border-t border-[#2B251A] pb-[env(safe-area-inset-bottom)]"
       >
         <div className="grid grid-cols-5 h-16">
           {navItems.map((item) => {
@@ -659,7 +668,7 @@ export default function App() {
                 key={item.id}
                 type="button"
                 onClick={() => setActiveTab(item.id)}
-                className={`flex flex-col items-center justify-center gap-0.5 transition-colors cursor-pointer ${
+                className={`min-h-[48px] flex flex-col items-center justify-center gap-0.5 transition-colors cursor-pointer ${
                   active ? 'text-[#E8CA68]' : 'text-[#8B816E]'
                 }`}
               >

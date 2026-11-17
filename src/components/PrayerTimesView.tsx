@@ -101,8 +101,8 @@ export const PrayerTimesView: React.FC<PrayerTimesViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Hero Banner: Next Salah Countdown + Location & Calculation Bar */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-        <div className="lg:col-span-7 bg-[#12100C] border border-[#2B251A] rounded-3xl p-6 sm:p-8 flex flex-col justify-between gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch">
+        <div className="lg:col-span-7 bg-[#12100C] border border-[#2B251A] rounded-3xl p-4 sm:p-8 flex flex-col justify-between gap-5 sm:gap-6">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div className="space-y-1">
               <div className="text-xs text-[#8B816E] flex flex-wrap items-center gap-2">
@@ -110,7 +110,7 @@ export const PrayerTimesView: React.FC<PrayerTimesViewProps> = ({
                 <span aria-hidden="true">·</span>
                 <span className="font-arabic text-sm text-[#D4AF37]">{hijri.ar}</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-semibold text-[#F5EFE2] text-balance">
+              <h2 className="text-xl sm:text-3xl font-semibold text-[#F5EFE2] text-balance">
                 Next Salah: {schedule.nextPrayer.name}{' '}
                 <span className="font-arabic text-[#E8CA68] font-normal">
                   ({schedule.nextPrayer.arabicName})
@@ -118,7 +118,7 @@ export const PrayerTimesView: React.FC<PrayerTimesViewProps> = ({
               </h2>
             </div>
 
-            <div className="text-right">
+            <div className="text-left sm:text-right">
               <div className="text-xs text-[#8B816E]">Time Remaining</div>
               <div className="text-3xl sm:text-4xl font-mono-tabular font-semibold text-[#E8CA68]">
                 {formatCountdown(msUntilNext)}
@@ -163,7 +163,7 @@ export const PrayerTimesView: React.FC<PrayerTimesViewProps> = ({
         </div>
 
         {/* Location & Astronomical Method Panel */}
-        <div className="lg:col-span-5 bg-[#12100C] border border-[#2B251A] rounded-3xl p-6 space-y-4">
+        <div className="lg:col-span-5 bg-[#12100C] border border-[#2B251A] rounded-3xl p-4 sm:p-6 space-y-4">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-[#D4AF37]" />
@@ -294,7 +294,7 @@ export const PrayerTimesView: React.FC<PrayerTimesViewProps> = ({
                       });
                     }
                   }}
-                  className="mt-2 grid grid-cols-3 gap-2"
+                  className="mt-2 grid grid-cols-2 sm:grid-cols-3 gap-2"
                 >
                   <input
                     type="number"
@@ -302,7 +302,7 @@ export const PrayerTimesView: React.FC<PrayerTimesViewProps> = ({
                     value={customLat}
                     onChange={(e) => setCustomLat(e.target.value)}
                     placeholder="Latitude"
-                    className="px-2.5 py-2 rounded-lg bg-[#090806] border border-[#2B251A] text-xs font-mono-tabular text-[#F5EFE2]"
+                    className="min-h-[40px] px-2.5 py-2 rounded-lg bg-[#090806] border border-[#2B251A] text-xs font-mono-tabular text-[#F5EFE2]"
                   />
                   <input
                     type="number"
@@ -310,11 +310,11 @@ export const PrayerTimesView: React.FC<PrayerTimesViewProps> = ({
                     value={customLng}
                     onChange={(e) => setCustomLng(e.target.value)}
                     placeholder="Longitude"
-                    className="px-2.5 py-2 rounded-lg bg-[#090806] border border-[#2B251A] text-xs font-mono-tabular text-[#F5EFE2]"
+                    className="min-h-[40px] px-2.5 py-2 rounded-lg bg-[#090806] border border-[#2B251A] text-xs font-mono-tabular text-[#F5EFE2]"
                   />
                   <button
                     type="submit"
-                    className="rounded-lg bg-[#D4AF37] text-[#090806] text-xs font-semibold cursor-pointer"
+                    className="col-span-2 sm:col-span-1 min-h-[40px] rounded-lg bg-[#D4AF37] text-[#090806] text-xs font-semibold cursor-pointer"
                   >
                     Apply
                   </button>
@@ -326,7 +326,7 @@ export const PrayerTimesView: React.FC<PrayerTimesViewProps> = ({
       </div>
 
       {/* Salah Timetable & Per-Prayer Custom Notification Settings */}
-      <div className="bg-[#12100C] border border-[#2B251A] rounded-3xl p-5 sm:p-6 space-y-4">
+      <div className="bg-[#12100C] border border-[#2B251A] rounded-3xl p-4 sm:p-6 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-[#2B251A]">
           <div>
             <h3 className="text-lg font-semibold text-[#F5EFE2]">
@@ -351,10 +351,10 @@ export const PrayerTimesView: React.FC<PrayerTimesViewProps> = ({
             return (
               <div
                 key={prayer.id}
-                className={`py-4 transition-colors ${isNext ? 'bg-[#D4AF37]/[0.04] -mx-3 px-3 rounded-2xl' : ''}`}
+                className={`py-4 transition-colors ${isNext ? 'bg-[#D4AF37]/[0.04] -mx-2 px-2 sm:-mx-3 sm:px-3 rounded-2xl' : ''}`}
               >
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div className="flex items-center gap-4 min-w-[190px]">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3">
+                  <div className="flex items-center gap-3 sm:gap-4 min-w-0">
                     {prayer.isFard ? (
                       <button
                         type="button"
@@ -374,7 +374,7 @@ export const PrayerTimesView: React.FC<PrayerTimesViewProps> = ({
                       </div>
                     )}
 
-                    <div>
+                    <div className="min-w-0">
                       <div className="flex items-center gap-2">
                         <span className="text-base font-semibold text-[#F5EFE2]">{prayer.name}</span>
                         <span className="font-arabic text-base text-[#E8CA68]">{prayer.arabicName}</span>
@@ -382,7 +382,7 @@ export const PrayerTimesView: React.FC<PrayerTimesViewProps> = ({
                           <span className="text-xs font-medium text-[#D4AF37]">· Next</span>
                         )}
                       </div>
-                      <div className="text-xs text-[#8B816E] tabular-nums">
+                      <div className="text-xs text-[#8B816E] tabular-nums truncate">
                         {cfg.enabled
                           ? `${cfg.atAdhanTime ? 'At Adhan' : ''}${
                               cfg.preReminderMinutes > 0
@@ -394,41 +394,43 @@ export const PrayerTimesView: React.FC<PrayerTimesViewProps> = ({
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 sm:gap-3 ml-auto">
-                    <span className="text-xl font-mono-tabular font-semibold text-[#F5EFE2] mr-2">
+                  <div className="flex items-center justify-between sm:justify-end gap-2 sm:gap-3 w-full sm:w-auto pl-13 sm:pl-0">
+                    <span className="text-lg sm:text-xl font-mono-tabular font-semibold text-[#F5EFE2] sm:mr-2">
                       {formatPrayerTime(prayer.time)}
                     </span>
 
-                    <button
-                      type="button"
-                      onClick={() => onTestAlert(prayer.id)}
-                      className="min-h-[40px] px-3 rounded-xl bg-[#1A1711] hover:bg-[#242018] border border-[#2B251A] text-xs font-medium text-[#E8CA68] flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer"
-                    >
-                      <Volume2 className="w-3.5 h-3.5" />
-                      <span>Test</span>
-                    </button>
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => onTestAlert(prayer.id)}
+                        className="min-h-[40px] px-3 rounded-xl bg-[#1A1711] hover:bg-[#242018] border border-[#2B251A] text-xs font-medium text-[#E8CA68] flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer"
+                      >
+                        <Volume2 className="w-3.5 h-3.5" />
+                        <span>Test</span>
+                      </button>
 
-                    <button
-                      type="button"
-                      onClick={() => onUpdateAlert(prayer.id, {enabled: !cfg.enabled})}
-                      aria-label={cfg.enabled ? `Mute ${prayer.name} alert` : `Enable ${prayer.name} alert`}
-                      className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-colors cursor-pointer ${
-                        cfg.enabled
-                          ? 'bg-[#D4AF37]/15 border-[#D4AF37]/60 text-[#E8CA68]'
-                          : 'bg-[#090806] border-[#2B251A] text-[#8B816E]'
-                      }`}
-                    >
-                      {cfg.enabled ? <Bell className="w-4 h-4" /> : <BellOff className="w-4 h-4" />}
-                    </button>
+                      <button
+                        type="button"
+                        onClick={() => onUpdateAlert(prayer.id, {enabled: !cfg.enabled})}
+                        aria-label={cfg.enabled ? `Mute ${prayer.name} alert` : `Enable ${prayer.name} alert`}
+                        className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-colors cursor-pointer ${
+                          cfg.enabled
+                            ? 'bg-[#D4AF37]/15 border-[#D4AF37]/60 text-[#E8CA68]'
+                            : 'bg-[#090806] border-[#2B251A] text-[#8B816E]'
+                        }`}
+                      >
+                        {cfg.enabled ? <Bell className="w-4 h-4" /> : <BellOff className="w-4 h-4" />}
+                      </button>
 
-                    <button
-                      type="button"
-                      onClick={() => setExpandedPrayer(isExpanded ? null : prayer.id)}
-                      aria-label={`Customize ${prayer.name} notification`}
-                      className="w-10 h-10 rounded-xl bg-[#1A1711] border border-[#2B251A] flex items-center justify-center text-[#C7BDA8] hover:text-[#F5EFE2] cursor-pointer"
-                    >
-                      {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-                    </button>
+                      <button
+                        type="button"
+                        onClick={() => setExpandedPrayer(isExpanded ? null : prayer.id)}
+                        aria-label={`Customize ${prayer.name} notification`}
+                        className="w-10 h-10 rounded-xl bg-[#1A1711] border border-[#2B251A] flex items-center justify-center text-[#C7BDA8] hover:text-[#F5EFE2] cursor-pointer"
+                      >
+                        {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                      </button>
+                    </div>
                   </div>
                 </div>
 

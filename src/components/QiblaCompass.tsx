@@ -135,18 +135,18 @@ export const QiblaCompass: React.FC<QiblaCompassProps> = ({
   const tickMarks = useMemo(() => Array.from({length: 72}, (_, i) => i * 5), []);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch">
       {/* Left/Center: Ornate Dark-Gold Astrolabe Qibla Compass */}
-      <div className="lg:col-span-7 bg-[#12100C] border border-[#2B251A] rounded-3xl p-6 sm:p-8 flex flex-col items-center justify-between gap-6">
+      <div className="lg:col-span-7 bg-[#12100C] border border-[#2B251A] rounded-3xl p-4 sm:p-8 flex flex-col items-center justify-between gap-5 sm:gap-6">
         <div className="w-full flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="text-xs text-[#8B816E]">Qibla Direction (اتجاه القبلة)</p>
-            <h2 className="text-xl font-semibold text-[#F5EFE2]">
+            <h2 className="text-lg sm:text-xl font-semibold text-[#F5EFE2]">
               {location.name} · <span className="font-arabic text-[#E8CA68]">{location.arabicName}</span>
             </h2>
           </div>
 
-          <div className="text-right tabular-nums">
+          <div className="text-left sm:text-right tabular-nums">
             <div className="text-2xl font-mono-tabular font-semibold text-[#E8CA68]">
               {qiblaBearing.toFixed(1)}° {getCardinalDirection(qiblaBearing)}
             </div>
@@ -155,7 +155,7 @@ export const QiblaCompass: React.FC<QiblaCompassProps> = ({
         </div>
 
         {/* Fixed Top Phone Index Indicator */}
-        <div className="relative w-full max-w-[340px] aspect-square flex items-center justify-center my-2">
+        <div className="relative w-full max-w-[275px] sm:max-w-[340px] aspect-square flex items-center justify-center my-1 sm:my-2">
           {/* Top Fixed Device Pointer */}
           <div className="absolute -top-2 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
             <div
@@ -286,7 +286,7 @@ export const QiblaCompass: React.FC<QiblaCompassProps> = ({
 
       {/* Right Column: Sensor Calibration, Location & Desktop Simulator */}
       <div className="lg:col-span-5 flex flex-col gap-4">
-        <div className="bg-[#12100C] border border-[#2B251A] rounded-2xl p-6 space-y-4">
+        <div className="bg-[#12100C] border border-[#2B251A] rounded-2xl p-4 sm:p-6 space-y-4">
           <div className="flex items-start justify-between gap-3">
             <div>
               <h3 className="text-base font-semibold text-[#F5EFE2]">Device Orientation &amp; Calibration</h3>
@@ -352,30 +352,30 @@ export const QiblaCompass: React.FC<QiblaCompassProps> = ({
           </div>
         </div>
 
-        <div className="bg-[#12100C] border border-[#2B251A] rounded-2xl p-6 space-y-4 flex-1 flex flex-col justify-between">
+        <div className="bg-[#12100C] border border-[#2B251A] rounded-2xl p-4 sm:p-6 space-y-4 flex-1 flex flex-col justify-between">
           <div className="space-y-3">
             <h3 className="text-base font-semibold text-[#F5EFE2]">Location Coordinates</h3>
             <p className="text-xs text-[#8B816E]">
               Qibla bearing is computed using spherical trigonometry toward the Holy Kaaba (21.4225° N, 39.8262° E).
             </p>
             <dl className="divide-y divide-[#2B251A] text-xs">
-              <div className="py-2.5 flex justify-between">
-                <dt className="text-[#8B816E]">Active Location</dt>
-                <dd className="text-[#F5EFE2] font-medium">{location.name}, {location.country}</dd>
+              <div className="py-2.5 flex justify-between gap-3">
+                <dt className="text-[#8B816E] shrink-0">Active Location</dt>
+                <dd className="text-[#F5EFE2] font-medium text-right">{location.name}, {location.country}</dd>
               </div>
-              <div className="py-2.5 flex justify-between">
-                <dt className="text-[#8B816E]">Latitude / Longitude</dt>
-                <dd className="font-mono-tabular text-[#C7BDA8]">
+              <div className="py-2.5 flex justify-between gap-3">
+                <dt className="text-[#8B816E] shrink-0">Latitude / Longitude</dt>
+                <dd className="font-mono-tabular text-[#C7BDA8] text-right">
                   {location.latitude.toFixed(4)}°, {location.longitude.toFixed(4)}°
                 </dd>
               </div>
-              <div className="py-2.5 flex justify-between">
-                <dt className="text-[#8B816E]">Great-Circle Bearing</dt>
-                <dd className="font-mono-tabular text-[#E8CA68]">{qiblaBearing.toFixed(2)}° CW from True North</dd>
+              <div className="py-2.5 flex justify-between gap-3">
+                <dt className="text-[#8B816E] shrink-0">Great-Circle Bearing</dt>
+                <dd className="font-mono-tabular text-[#E8CA68] text-right">{qiblaBearing.toFixed(2)}° CW from True North</dd>
               </div>
-              <div className="py-2.5 flex justify-between">
-                <dt className="text-[#8B816E]">Distance to Makkah</dt>
-                <dd className="font-mono-tabular text-[#F5EFE2]">{distanceKm.toLocaleString()} km</dd>
+              <div className="py-2.5 flex justify-between gap-3">
+                <dt className="text-[#8B816E] shrink-0">Distance to Makkah</dt>
+                <dd className="font-mono-tabular text-[#F5EFE2] text-right">{distanceKm.toLocaleString()} km</dd>
               </div>
             </dl>
           </div>

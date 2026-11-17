@@ -1,0 +1,6 @@
+{
+  "name": "حسنات — Hasanat",
+  "description": "Holy Quran Mushaf with synchronized reciter page-following, live rotating Qibla compass, location-based Salah notifications, and offline daily Adhkar.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

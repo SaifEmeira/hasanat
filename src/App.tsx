@@ -12,6 +12,7 @@ import {
 import {AdhkarView} from './components/AdhkarView';
 import {CompleteVerseGame} from './components/CompleteVerseGame';
 import {PrayerTimesView} from './components/PrayerTimesView';
+import {PWAInstallButton} from './components/PWAInstallButton';
 import {QiblaCompass} from './components/QiblaCompass';
 import {QuranMushaf} from './components/QuranMushaf';
 import {SettingsModal} from './components/SettingsModal';
@@ -513,10 +514,11 @@ export default function App() {
             </span>
           </div>
 
-          <div className="flex items-center gap-2 tabular-nums text-[#8B816E]">
+          <div className="flex items-center gap-3 tabular-nums text-[#8B816E]">
             <span>{isOnline ? 'Online · Offline Cache Active' : 'Offline Mode · Local Sanctuary Ready'}</span>
             <span aria-hidden="true">·</span>
             <span className="text-[#D4AF37]">Hasanat: {hasanatScore.toLocaleString()}</span>
+            <PWAInstallButton compact />
           </div>
         </div>
       </div>
